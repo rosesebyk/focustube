@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>FocusTubes</title>
+    <link rel="stylesheet" href="popup.css" />
+  </head>
+  <body>
+    <div class="container">
+      <h1>FocusTubes</h1>
+      <p class="subtitle">Tell us what you’re working on.</p>
+
+      <form id="focus-form">
+        <label for="task">Current task</label>
+        <input
+          id="task"
+          name="task"
+          type="text"
+          placeholder="e.g. Calculus homework, React project"
+          required
+        />
+
+        <label for="role">What best describes you?</label>
+        <select id="role" name="role">
+          <option value="student">Student</option>
+          <option value="programmer">Programmer</option>
+          <option value="teacher">Teacher</option>
+          <option value="researcher">Researcher</option>
+          <option value="other">Other</option>
+        </select>
+
+        <label for="strictness">Filter strength</label>
+        <select id="strictness" name="strictness">
+          <option value="medium">Medium (recommended)</option>
+          <option value="high">High – hide almost everything unrelated</option>
+          <option value="low">Low – keep more videos visible</option>
+        </select>
+
+        <div class="timer-section">
+          <label class="timer-checkbox-label">
+            <input type="checkbox" id="timer-enabled" />
+            <span>Enable Pomodoro timer</span>
+          </label>
+
+          <div id="timer-settings" style="display: none;">
+            <label for="focus-duration">Focus duration (minutes)</label>
+            <input
+              type="number"
+              id="focus-duration"
+              min="1"
+              max="60"
+              value="25"
+            />
+
+            <label for="break-duration">Break duration (minutes)</label>
+            <input
+              type="number"
+              id="break-duration"
+              min="1"
+              max="30"
+              value="10"
+            />
+
+            <div id="timer-status"></div>
+            <button type="button" id="timer-control" class="timer-button">Start Timer</button>
+          </div>
+        </div>
+
+        <div class="advanced">
+          <label for="openai-key">Google AI Studio / Gemini API key (optional)</label>
+          <input
+            id="openai-key"
+            name="openai-key"
+            type="password"
+            placeholder="sk-..."
+          />
+          <p class="advanced-hint">
+            Stored only in your browser and used to ask an LLM if each video is on-topic.
+          </p>
+        </div>
+
+        <button type="submit" class="primary-button">Start focusing</button>
+      </form>
+
+      <p id="status" class="status"></p>
+
+      <div class="tips">
+        <h2>How it works</h2>
+        <ul>
+          <li>We use your task and role to find relevant keywords.</li>
+          <li>On YouTube, unrelated videos are hidden or de‑emphasized.</li>
+          <li>You can reopen this popup anytime to change focus.</li>
+        </ul>
+      </div>
+    </div>
+
+    <script src="popup.js"></script>
+  </body>
+</html>
+
